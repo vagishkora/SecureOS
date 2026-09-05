@@ -1,0 +1,51 @@
+{
+  "name": "secure-os",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Browser-based AI operating system with capability-based security",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "concurrently -k \"vite\" \"npm run dev:electron\"",
+    "dev:electron": "wait-on tcp:5173 && tsc -p electron/tsconfig.json && electron .",
+    "build:electron": "tsc -p electron/tsconfig.json",
+    "build": "tsc && vite build && npm run build:electron && electron-builder",
+    "postinstall": "electron-rebuild -f -w node-pty",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@xterm/addon-fit": "^0.10.0",
+    "@xterm/xterm": "^5.5.0",
+    "autoprefixer": "^10.5.2",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.42.0",
+    "idb": "^8.0.2",
+    "lucide-react": "^1.22.0",
+    "node-pty": "^1.0.0",
+    "postcss": "^8.5.16",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-rnd": "^10.5.3",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.1",
+    "zustand": "^5.0.5"
+  },
+  "devDependencies": {
+    "@electron/rebuild": "^3.7.0",
+    "@tailwindcss/postcss": "^4.3.1",
+    "@types/node": "^22.15.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "concurrently": "^9.0.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0",
+    "fake-indexeddb": "^6.2.5",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.1",
+    "wait-on": "^8.0.0"
+  }
+}
