@@ -7,6 +7,7 @@ import { kernelStore } from './kernel';
 import { hasAnyUser } from './kernel/userdb';
 import { BootSequence } from './boot/BootSequence';
 import { useSettingsStore } from './kernel/settings';
+import { Analytics } from '@vercel/analytics/react';
 import clsx from 'clsx';
 
 function App() {
@@ -66,6 +67,9 @@ function App() {
       ) : (
         <Desktop />
       )}
+
+      {/* Vercel Web Analytics tracker */}
+      <Analytics />
     </div>
   );
 }
